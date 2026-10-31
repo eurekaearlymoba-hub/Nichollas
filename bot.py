@@ -136,20 +136,20 @@ async def track_members(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 
 def main():
-    # Masukkan Token dari BotFather di sini
+    # Mengambil token bot secara otomatis dari environment variable GitHub Secrets
     TOKEN = "9120926220:AAFFxtB18zse5fiAoffLO4VkGnwAHsvzrvg"
     
     app = Application.builder().token(TOKEN).build()
-    
+
     # Mendaftarkan Handler Perintah & Callback Tombol
     app.add_handler(CommandHandler("keep", keep_format))
     app.add_handler(CommandHandler("izin", izin_order))
     app.add_handler(CommandHandler("tagall", tag_all))
     app.add_handler(CallbackQueryHandler(button_handler))
-    
+
     # Merekam pesan masuk untuk mendata member secara otomatis
     app.add_handler(MessageHandler(filters.TEXT & (~filters.COMMAND), track_members))
-    
+
     print("Bot dengan tombol interaktif dan balasan otomatis sedang berjalan...")
     app.run_polling()
 
