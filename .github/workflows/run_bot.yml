@@ -19,9 +19,9 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        if [ -f requirements.txt ]; then pip install -r requirements.txt; endif
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Run Bot with Timeout
       run: |
         timeout 1740s python bot.py || true
-    env:
-      BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+      env:
+        BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
